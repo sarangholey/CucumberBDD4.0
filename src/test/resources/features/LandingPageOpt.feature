@@ -49,3 +49,12 @@ When User cilck on Video Tutorials button
 And  User redirected to you tube video page with url as  "https://www.youtube.com/c/AutomationExercise"
 And  User click on contact us button of the header section
 Then User verify the page title "Automation Exercise - Contact Us"
+
+@ProdMainCategory
+Scenario: Under brands different brand visibilty validation
+Given user navigate to the home application url
+When user is able to see "CATEGORY" header
+Then under Category below list is displayed
+| WOMEN |
+| MEN   |
+| KIDS	|

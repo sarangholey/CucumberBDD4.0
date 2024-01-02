@@ -101,20 +101,20 @@ public class LandingPageOpt_StepDefs {
 		logger.info("user verify the cart page title");
 	}
 
-	@When("User click on signup\\/login button")
-	public void user_click_on_signup_login_button() {
-		driver.get(base_url);
-		WebElement signupBtnEle = driver.findElement(By.xpath("//a[text()=' Signup / Login']"));
-		signupBtnEle.click();
-		logger.info("user click on signup/login button");
-	}
+//	@When("User click on signup\\/login button")
+//	public void user_click_on_signup_login_button() {
+//		driver.get(base_url);
+//		WebElement signupBtnEle = driver.findElement(By.xpath("//a[text()=' Signup / Login']"));
+//		signupBtnEle.click();
+//		logger.info("user click on signup/login button");
+//	}
 
-	@When("User redirect to the signup\\/login page with title as {string}")
-	public void user_redirect_to_the_signup_login_page_with_title_as(String signUpPageTitle) {
-		Assert.assertEquals(true, driver.getTitle().contains(signUpPageTitle));
-		scn.log("user verify signup page title" + " - " + signUpPageTitle);
-		logger.info("user verify the signup page title");
-	}
+//	@When("User redirect to the signup\\/login page with title as {string}")
+//	public void user_redirect_to_the_signup_login_page_with_title_as(String signUpPageTitle) {
+//		Assert.assertEquals(true, driver.getTitle().contains(signUpPageTitle));
+//		scn.log("user verify signup page title" + " - " + signUpPageTitle);
+//		logger.info("user verify the signup page title");
+//	}
 
 	@When("User Click on test cases button")
 	public void user_click_on_test_cases_button() {
@@ -172,67 +172,21 @@ public class LandingPageOpt_StepDefs {
 		scn.log("user verify contact us page title" + " - " + contactUsPageTitle);
 		logger.info("user verify contact us page title");
 	}
-
-	@When("user able to see {string} section on login page")
-	public void user_able_to_see_section_on_login_page(String loginToAcc) {
-		WebElement loginToAccTextEle = driver.findElement(By.xpath("//h2[text()='Login to your account']"));
-		Assert.assertEquals(loginToAcc, loginToAccTextEle.getText());
-		scn.log("user able to see " + loginToAcc + "on login page");
-		logger.info("user able to see " + loginToAcc + "on login page");
-		scn.log("user able to see " + loginToAcc + "on login page");
-		logger.info("user able to see " + loginToAcc + "on login page");
+	
+	@When("user is able to see {string} header")
+	public void user_is_able_to_see_header(String categoryStringValue) {
+		WebElement categoryStringEle = driver.findElement(By.xpath("//h2[text()='Category']"));
+		Assert.assertEquals(categoryStringValue, categoryStringEle.getText());
 	}
-
-	@When("User enter {string} and {string}")
-	public void user_enter_and(String EmailId, String Password) {
-		WebElement EmailIdEle = driver.findElement(By.xpath("//input[@data-qa='login-email']"));
-		EmailIdEle.sendKeys(EmailId);
-
-		WebElement passwordEle = driver.findElement(By.xpath("//input[@data-qa='login-password']"));
-		passwordEle.sendKeys(Password);
-		scn.log("user enter email and password - " + EmailId + " , " + Password);
-		logger.info("user enter email and password - " + EmailId + " , " + Password);
-	}
-
-	@When("User click on login button")
-	public void user_click_on_login_button() {
-		WebElement loginBtnEle = driver.findElement(By.xpath("//button[@data-qa='login-button']"));
-		loginBtnEle.click();
-		logger.info("user click on login button");
-	}
-
-	@Then("User verify the error message {string}")
-	public void user_verify_the_error_message(String errorMsg) {
-		WebElement errorMsgEle = driver.findElement(By.xpath("//p[text()='Your email or password is incorrect!']"));
-		Assert.assertEquals(errorMsg, errorMsgEle.getText());
-		scn.log("user verify error msg - " + errorMsg);
-		logger.info("user verify error msg - " + errorMsg);
-	}
-
-	@When("User enter valid {string} and {string} for login")
-	public void user_enter_valid_and_for_login(String ValidEmailId, String ValidPassword) {
-		WebElement EmailIdEle = driver.findElement(By.xpath("//input[@data-qa='login-email']"));
-		EmailIdEle.sendKeys(ValidEmailId);
-
-		WebElement passwordEle = driver.findElement(By.xpath("//input[@data-qa='login-password']"));
-		passwordEle.sendKeys(ValidPassword);
-		scn.log("user enter valid email and password- " + ValidEmailId + " , " + ValidPassword);
-		logger.info("user enter valid email and password- " + ValidEmailId + " , " + ValidPassword);
-	}
-
-	@Then("User verify with {string} just after Logged in as button")
-	public void user_verify_with_just_after_logged_in_as_button(String username) {
-		WebElement loggedInUserNameTxtEle = driver.findElement(By.xpath("//a[text()= ' Logged in as ']/b"));
-		Assert.assertEquals(username, loggedInUserNameTxtEle.getText());
-		scn.log("user verify username after logged in - " + username);
-		logger.info("user verify username after logged in - " + username);
-	}
-
-	@Then("User click on logout button")
-	public void user_click_on_logout_button() {
-		WebElement logoutBtnEle = driver.findElement(By.xpath("//a[text()=' Logout']"));
-		logoutBtnEle.click();
-		logger.info("user click on logout button");
+	
+	@Then("under Category below list is displayed")
+	public void under_Category_below_list_is_displayed(List<String> brandCategoryNameList) {
+	    List<String> expectedbrandCategoryList = brandCategoryNameList;
+	    List<WebElement> actBrandCategoryListEle = driver.findElements(By.xpath("//div[@id='accordian']//div[@class='panel-heading']//a"));
+	    for (int i = 0; i < expectedbrandCategoryList.size(); i++) {
+	    	//System.out.println(actBrandCategoryListEle.get(i).getText());
+	    	Assert.assertEquals(expectedbrandCategoryList.get(i), actBrandCategoryListEle.get(i).getText());
+		}
 	}
 
 }
