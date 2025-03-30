@@ -16,6 +16,8 @@ import io.cucumber.junit.CucumberOptions;
 		plugin = {"pretty",								// to show console output as pretty with proper formatting
 				"html:targetRerun/html/CucumberBDD4.0_Re-Report.html", 	// to generate html report inside target folder
 				"json:targetRerun/json/file.json",			// to generate json report inside target folder
+	            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+			    "timeline:test-output-thread/"
 		},
 		publish = true,									// to publish cucumber online report
 		monochrome = true,								// to print output on console with proper alignment and systematic way

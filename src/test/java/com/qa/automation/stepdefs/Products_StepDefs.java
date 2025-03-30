@@ -1,6 +1,7 @@
 package com.qa.automation.stepdefs;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -68,5 +69,34 @@ public class Products_StepDefs {
 		List<WebElement> searchedProdListEle = driver
 				.findElements(By.xpath("//div[@class='features_items']//div[@class='productinfo text-center']/p"));
 		Assert.assertEquals(true, searchedProdListEle.get(0).getText().contains(productNameKeyowrd));
+	}
+	
+	@When("User search following product from search box and add into cart")
+	public void user_search_following_product_from_search_box_and_add_into_cart(List<Map<String,String>> cartDataTable) throws InterruptedException {
+	    // Write code here that turns the phrase above into concrete actions
+	    // For automatic transformation, change DataTable to one of
+	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+	    // For other transformations you can register a DataTableType.
+		for (int i=0; i<cartDataTable.size();i++) {
+			searchAndAddProduct(cartDataTable, i);
+		}	
+	}
+	
+	public void searchAndAddProduct(List<Map<String,String>> data, int index) throws InterruptedException
+	{
+		String itemName = data.get(index).get("ITEM");
+		String productName = data.get(index).get("PRODUCT_NAME");
+        int productQuantity = Integer.parseInt(data.get(index).get("QUANTITY"));
+        System.out.println("----------------------");
+        System.out.println((index+1) + " Item Name : " + itemName + " Product Name : " + productName + " product quantity : " + productQuantity);
+        System.out.println("----------------------");
+        
+	}
+	
+	@Then("User cart is updated with the products and quantity")
+	public void user_cart_is_updated_with_the_products_and_quantity() {
+	    // Yet to be implimented
 	}
 }

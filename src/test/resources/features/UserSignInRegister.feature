@@ -4,7 +4,7 @@
 @userlogin
 Feature: E-commerce Project Web Site login user fuctionality
 
-@LoginWithInvalidCredential
+@loginWithInvalidCredential
 Scenario Outline: User login with three different  invalid emailId and password
 Given User click on signup/login button
 When  User redirect to the signup/login page with title as "Automation Exercise - Signup / Login"
@@ -19,7 +19,7 @@ Examples:
 | stephanieJoe444@gmail.com | test@444  |
 
 
-@LoginWithValidCredential
+@loginWithValidCredential
 Scenario Outline: User login with two different valid emailId and password
 Given User click on signup/login button
 When  User redirect to the signup/login page with title as "Automation Exercise - Signup / Login"
@@ -33,7 +33,7 @@ Examples:
 |  ciwika1748@frandin.com | 123456.Abc    | Ryan Wick     |
 |  ciwika1744@frandin.com | 123456.Abc    | James Richard |
 
-@RegUserLogin
+@regUserLogin
 Scenario: User is able to visit application login page and with valid credentials able to login in app
 Given user navigate to the home application url
 And User click on signup/login button

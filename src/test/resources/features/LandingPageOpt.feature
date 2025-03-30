@@ -1,10 +1,10 @@
 # Author: Sarang Holey | sarangholey@gmail.com
-# This file contain scenario's to check a status of application search functionality
+# This file contain scenario's to check a status of the landing page of the application
 
-@LandingPage
+@ui @landingPage
 Feature: E-commerce Project Web Site Landing Page Options
 
-@LandingPageHaderOptions
+@landingPageHaderOptions @smoke
 Scenario: Validate the different header options on the landing page of the application
 Given user navigated to landing pag of the application with current url as "https://automationexercise.com/"
 When the entire header section is visible
@@ -18,7 +18,7 @@ Then following options are available under the header section
 | Video Tutorials |
 | Contact us      |
 
-@LandingPageHaderOptions
+@landingPageLinkTitles
 Scenario: Validate the different header options on the landing page of the application
 Given user navigated to landing pag of the application with current url as "https://automationexercise.com/"
 When the entire header section is visible
@@ -33,7 +33,7 @@ Then following options are available under the header sections
 | Video Tutorials | (212) AutomationExercise - YouTube 											|
 | Contact us      | Automation Exercise - Contact Us 												|
 
-@ValidateHeaderSection
+@landingPageLinkTitles
 Scenario: User is able to open the browser, navigate to the url and validate the header section elements of webpage
 Given User Click on product button
 When User redirected to product page with title as "Automation Exercise - All Products" 
@@ -50,7 +50,7 @@ And  User redirected to you tube video page with url as  "https://www.youtube.co
 And  User click on contact us button of the header section
 Then User verify the page title "Automation Exercise - Contact Us"
 
-@ProdMainCategory
+@landigPageProdMainCategory 
 Scenario: Under brands different brand visibilty validation
 Given user navigate to the home application url
 When user is able to see "CATEGORY" header
